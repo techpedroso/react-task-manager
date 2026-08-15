@@ -1,0 +1,13 @@
+.app[data-theme="light"] {
+    --color-primary: #607456;
+    --color-background: #FFF7EB;
+    --color-surface: #F9F0E0;
+    --color-text: #191919;
+}
+
+.app[data-theme="dark"] {
+    --color-primary: #7ea16c;
+    --color-background: #191919;
+    --color-surface: #282828;
+    --color-text: #FFF7EB;
+}

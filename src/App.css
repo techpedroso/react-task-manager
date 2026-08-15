@@ -1,0 +1,7 @@
+@import url(./styles/theme.css);
+
+.app {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
