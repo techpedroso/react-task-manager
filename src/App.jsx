@@ -1,3 +1,5 @@
+import "./App.css";
+
 import { useState } from "react"; //importa o useState do React
 
 import Task from "./components/Task/Task.jsx"
