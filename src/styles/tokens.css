@@ -1,4 +1,12 @@
 :root {
+  --font-size-sm: 16px;
+  --font-size-md: 20px;
+  --font-size-lg: 24px;
+
+  --width-sm: 640px;
+  --width-md: 960px;
+  --width-lg: 1200px;
+
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
