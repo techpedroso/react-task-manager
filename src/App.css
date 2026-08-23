@@ -1,7 +1,25 @@
+@import url(./styles/flex.css);
 @import url(./styles/theme.css);
+@import url(./styles/tokens.css);
 
 .app {
   min-height: 100vh;
   background-color: var(--color-background);
   color: var(--color-text);
+
+  padding: 50px 50px;
+}
+
+.title {
+  font-size: 36px;
+  color: var(--color-text);
+}
+
+.themeBtn {
+  background-color: var(--color-surface);
+  border: none;
+  color: var(--color-text);
+  padding: var(--spacing-sm);
+  cursor: pointer;
+  border-radius: var(--radius-md);
 }
