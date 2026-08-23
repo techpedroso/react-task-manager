@@ -1,5 +1,9 @@
-function Task() {
-    return <h1>Task</h1>;
+function Task({tasks, children}) {
+    return (
+        tasks.map((task) => (
+            <p>{task.title}</p>
+        ))
+    );
 }
 
 export default Task;
