@@ -1,8 +1,12 @@
-function Task({tasks, children}) {
+import "./Task.css";
+
+function Task({ tasks, children }) {
     return (
-        tasks.map((task) => (
-            <p>{task.title}</p>
-        ))
+        <ul className="task-list">
+            {tasks.map((task) => 
+                <li className="task-list_item">{task.title}</li>
+            )}
+        </ul>
     );
 }
 

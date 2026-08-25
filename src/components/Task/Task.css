@@ -1,0 +1,19 @@
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    width: 40%;
+    padding: 12px;
+    border-radius: 8px;
+
+    box-shadow: var(--shadow-sm);
+    background-color: var(--color-surface);
+}
+
+.task-list_item {
+    padding: 12px;
+    border-radius: 6px;
+    box-shadow: var(--shadow-sm);
+    background-color: var(--color-surface-raised);
+}
