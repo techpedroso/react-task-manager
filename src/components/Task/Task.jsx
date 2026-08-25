@@ -4,7 +4,7 @@ function Task({ tasks, children }) {
     return (
         <ul className="task-list">
             {tasks.map((task) => 
-                <li className="task-list_item">{task.title}</li>
+                <li key={task.id} className="task-list_item">{task.title}</li>
             )}
         </ul>
     );
