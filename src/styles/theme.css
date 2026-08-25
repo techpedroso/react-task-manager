@@ -1,13 +1,17 @@
 .app[data-theme="light"] {
     --color-primary: #607456;
-    --color-background: #FFF7EB;
-    --color-surface: #F9F0E0;
+    --color-background: #F5F6F8;
+    --color-surface: #FAFAFB;
+    --color-surface-raised: #FFFFFF;
     --color-text: #191919;
+    --shadow-sm: 0 2px 4px rgb(0 0 0 / 0.06);
 }
 
 .app[data-theme="dark"] {
     --color-primary: #7ea16c;
     --color-background: #191919;
     --color-surface: #282828;
+    --color-surface-raised: #171717;
     --color-text: #FFF7EB;
+    --shadow-sm: 0 2px 6px rgb(0 0 0 / 0.25);
 }
