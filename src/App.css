@@ -1,9 +1,9 @@
 .app {
+  min-width: 1000px;
   min-height: 100vh;
+  padding: 50px;
   background-color: var(--color-background);
   color: var(--color-text);
-
-  padding: 50px 50px;
 }
 
 .title {

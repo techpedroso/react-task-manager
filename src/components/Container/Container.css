@@ -1,16 +1,6 @@
 .container {
+    display: flex;
+    justify-content: center;
     width: 100%;
-    margin: 0 auto;
-}
-
-.container-small {
-    max-width: 640px;
-}
-
-.container-medium {
-    max-width: 960px;
-}
-
-.container-large {
-    max-width: 1200px;
+    gap: 12px;
 }

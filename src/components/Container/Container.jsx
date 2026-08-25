@@ -1,8 +1,8 @@
 import "./Container.css";
 
-function Container({ children, variant = "default" }) {
+function Container({ children, variant }) {
   return (
-    <div className={`container container-${variant}`}>
+    <div className={`container`}>
       {children}
     </div>
   );

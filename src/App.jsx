@@ -2,6 +2,7 @@ import "./App.css";
 
 import { useState } from "react"; //importa o useState do React
 
+import Container from "./components/Container/Container.jsx"
 import Task from "./components/Task/Task.jsx"
 import AddTask from "./components/AddTask/AddTask.jsx"
 
@@ -35,24 +36,24 @@ function App() {
   return (
     <div className="app flex align-center flex-column gap-lg" data-theme={theme}>
       {/* Header */}
-      <div className="flex gap-lg" variant="medium">
+      <Container>
         <h1 className="title">Task Manager</h1>
 
         <button className="themeBtn" onClick={toggleTheme}>
           Theme
         </button>
-      </div>
+      </Container>
 
-      {/* Form */}
-      <div variant="medium">
+      {/* Form */}  
+      <Container>
     
-      </div>
+      </Container>
 
       {/* List */}
-      <div className="" variant="medium">
+      <Container>
         <Task tasks={tasks}>
         </Task>
-      </div>
+      </Container>
     </div>
   );
 }
