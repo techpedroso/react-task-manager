@@ -29,11 +29,18 @@ function App() {
     },
   ])
 
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "light"
+  );
 
   function toggleTheme() {
-    setTheme(theme === "light" ? "dark" : "light");
+    const newTheme = theme === "light" ? "dark" : "light";
+
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   }
+
+  const themeIcon = theme === "light" ? "sun" : "moon";
 
   function onTaskClick(taskId) {
     const newTasks = tasks.map(task => {
@@ -59,7 +66,7 @@ function App() {
         <h1 className="title">Task Manager</h1>
 
         <button className="button" onClick={toggleTheme}>
-          <Icon name={theme === "light" ? "sun" : "moon"} />
+          <Icon name={themeIcon} />
         </button>
       </Container>
 
