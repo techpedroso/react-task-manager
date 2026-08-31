@@ -5,6 +5,7 @@ import { useState } from "react"; //importa o useState do React
 import Container from "./components/Container/Container.jsx"
 import Task from "./components/Task/Task.jsx"
 import AddTask from "./components/AddTask/AddTask.jsx"
+import Icon from "./components/Icon/Icon.jsx";
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -39,8 +40,8 @@ function App() {
       <Container>
         <h1 className="title">Task Manager</h1>
 
-        <button className="themeBtn" onClick={toggleTheme}>
-          Theme
+        <button className="button" onClick={toggleTheme}>
+          <Icon name={theme === "light" ? "sun" : "moon"} />
         </button>
       </Container>
 
