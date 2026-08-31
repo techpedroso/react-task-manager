@@ -42,7 +42,7 @@ function App() {
 
   const themeIcon = theme === "light" ? "sun" : "moon";
 
-  function onTaskClick(taskId) {
+  function onTaskComplete(taskId) {
     const newTasks = tasks.map(task => {
       if (task.id === taskId) {
         return { ...task, isCompleted: !task.isCompleted }
@@ -77,7 +77,7 @@ function App() {
 
       {/* List */}
       <Container>
-        <Task tasks={tasks} onTaskClick={onTaskClick} onTaskDelete={onTaskDelete}>
+        <Task tasks={tasks} onTaskComplete={onTaskComplete} onTaskDelete={onTaskDelete}>
         </Task>
       </Container>
     </div>

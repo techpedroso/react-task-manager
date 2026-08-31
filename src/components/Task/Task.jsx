@@ -7,7 +7,7 @@ function Task(props) {
             {props.tasks.map((task) =>
                 <li key={task.id} className="flex justify-center gap-sm">
                     <button
-                        onClick={() => props.onTaskClick(task.id)}
+                        onClick={() => props.onTaskComplete(task.id)}
                         className={`task-list_item ${task.isCompleted && 'task-list_item-completed'}`}>
                         {task.title}
                     </button>
