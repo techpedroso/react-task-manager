@@ -1,0 +1,6 @@
+.icon {
+    /* not a problem if it not exist styles. it would inherit for the parent */
+    width: 24px;
+    height: 24px;
+    color: var(--color-text); 
+}
