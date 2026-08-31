@@ -21,5 +21,6 @@
 }
 
 .button-icon {
-  padding: 0px;
+  background-color: var(--color-surface-raised);
+  padding: var(--spacing-sm);
 }
