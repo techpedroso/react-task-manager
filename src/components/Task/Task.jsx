@@ -1,10 +1,21 @@
 import "./Task.css";
+import Icon from "../Icon/Icon.jsx";
 
-function Task({ tasks, children }) {
+function Task(props) {
     return (
         <ul className="task-list">
-            {tasks.map((task) => 
-                <li key={task.id} className="task-list_item">{task.title}</li>
+            {props.tasks.map((task) =>
+                <li key={task.id} className="flex justify-center gap-sm">
+                    <button 
+                        onClick={() => props.onTaskClick(task.id)}
+                        className={`task-list_item ${task.isCompleted && 'task-list_item-completed'}`}>
+                        {task.title}
+                    </button>
+
+                    <button className="button button-icon">
+                        <Icon name="chevron-right"></Icon>
+                    </button>
+                </li>
             )}
         </ul>
     );

@@ -12,8 +12,18 @@
 }
 
 .task-list_item {
-    padding: 12px;
+    width: 100%;
+
+    color: var(--color-text);
+    background-color: var(--color-surface-raised);
+    border: none;
     border-radius: 6px;
     box-shadow: var(--shadow-sm);
-    background-color: var(--color-surface-raised);
+    padding: 12px;
+
+    cursor: pointer;
+}
+
+.task-list_item-completed {
+    text-decoration: line-through;
 }

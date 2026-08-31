@@ -28,10 +28,23 @@ function App() {
       isCompleted: false
     },
   ])
+
   const [theme, setTheme] = useState("dark");
 
   function toggleTheme() {
     setTheme(theme === "light" ? "dark" : "light");
+  }
+
+  function onTaskClick(taskId) {
+    const newTasks = tasks.map(task => {
+      if (task.id === taskId) {
+        return { ...task, isCompleted: !task.isCompleted }
+      }
+
+      return task;
+    })
+
+    setTasks(newTasks);
   }
 
   return (
@@ -45,14 +58,14 @@ function App() {
         </button>
       </Container>
 
-      {/* Form */}  
+      {/* Form */}
       <Container>
-    
+
       </Container>
 
       {/* List */}
       <Container>
-        <Task tasks={tasks}>
+        <Task tasks={tasks} onTaskClick={onTaskClick}>
         </Task>
       </Container>
     </div>
