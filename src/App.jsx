@@ -47,6 +47,11 @@ function App() {
     setTasks(newTasks);
   }
 
+  function onTaskDelete(taskId) {
+    const newTasks = tasks.filter(task => task.id !== taskId);
+    setTasks(newTasks);
+  }
+
   return (
     <div className="app flex align-center flex-column gap-lg" data-theme={theme}>
       {/* Header */}
@@ -65,7 +70,7 @@ function App() {
 
       {/* List */}
       <Container>
-        <Task tasks={tasks} onTaskClick={onTaskClick}>
+        <Task tasks={tasks} onTaskClick={onTaskClick} onTaskDelete={onTaskDelete}>
         </Task>
       </Container>
     </div>

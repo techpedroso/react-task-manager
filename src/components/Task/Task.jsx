@@ -6,7 +6,7 @@ function Task(props) {
         <ul className="task-list">
             {props.tasks.map((task) =>
                 <li key={task.id} className="flex justify-center gap-sm">
-                    <button 
+                    <button
                         onClick={() => props.onTaskClick(task.id)}
                         className={`task-list_item ${task.isCompleted && 'task-list_item-completed'}`}>
                         {task.title}
@@ -14,6 +14,12 @@ function Task(props) {
 
                     <button className="button button-icon">
                         <Icon name="chevron-right"></Icon>
+                    </button>
+
+                    <button
+                        onClick={() => props.onTaskDelete(task.id)}
+                        className="button button-icon">
+                        <Icon name="trash"></Icon>
                     </button>
                 </li>
             )}
