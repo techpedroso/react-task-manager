@@ -3,6 +3,7 @@ import "./App.css";
 import { useState } from "react"; //importa o useState do React
 
 import Container from "./components/Container/Container.jsx"
+import ProgressBar from "./components/ProgressBar/ProgressBar.jsx";
 import Task from "./components/Task/Task.jsx"
 import AddTask from "./components/AddTask/AddTask.jsx"
 import Icon from "./components/Icon/Icon.jsx";
@@ -31,6 +32,8 @@ function App() {
     },
   ])
 
+  const [progress, setProgress] = useState();
+
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") || "light"
   );
@@ -44,6 +47,10 @@ function App() {
 
   const themeIcon = theme === "light" ? "sun" : "moon";
 
+  function onChangeProgress(tasks) {
+    setProgress(tasks.filter((task) => (task.isCompleted === true)).length / tasks.length * 100);
+  }
+
   function onAddTaskSubmit(title, description) {
     if (!title.trim() || !description.trim())
       return;
@@ -55,7 +62,9 @@ function App() {
       isCompleted: false
     };
 
-    setTasks([...tasks, newTask]);
+    const newTasks = [...tasks, newTask];
+    setTasks(newTasks);
+    onChangeProgress(newTasks);
   }
 
   function onTaskComplete(taskId) {
@@ -68,11 +77,13 @@ function App() {
     })
 
     setTasks(newTasks);
+    onChangeProgress(newTasks);
   }
 
   function onTaskDelete(taskId) {
     const newTasks = tasks.filter(task => task.id !== taskId);
     setTasks(newTasks);
+    onChangeProgress(newTasks);
   }
 
   return (
@@ -90,6 +101,10 @@ function App() {
       <Container>
         <AddTask onAddTaskSubmit={onAddTaskSubmit}>
         </AddTask>
+      </Container>
+
+      <Container>
+        <ProgressBar progress={progress}></ProgressBar>
       </Container>
 
       {/* List */}
