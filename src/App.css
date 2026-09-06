@@ -5,6 +5,7 @@
   background-color: var(--color-background);
   color: var(--color-text);
 }
+
 .base-container {
   padding: var(--spacing-md);
   border-radius: var(--radius-lg);
@@ -27,12 +28,14 @@
 }
 
 .button {
+  font-size: var(--font-size-md);
   background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
   border: none;
-  color: var(--color-text);
-  padding: var(--spacing-sm);
-  cursor: pointer;
   border-radius: var(--radius-md);
+  color: var(--color-text);
+  cursor: pointer;
+  padding: var(--spacing-sm);
 }
 
 .button-icon {
