@@ -7,6 +7,8 @@ import Task from "./components/Task/Task.jsx"
 import AddTask from "./components/AddTask/AddTask.jsx"
 import Icon from "./components/Icon/Icon.jsx";
 
+import {v4} from "uuid";
+
 function App() {
   const [tasks, setTasks] = useState([
     {
@@ -42,6 +44,20 @@ function App() {
 
   const themeIcon = theme === "light" ? "sun" : "moon";
 
+  function onAddTaskSubmit(title, description) {
+    if (!title.trim() || !description.trim())
+      return;
+
+    const newTask = {
+      id: v4(),
+      title: title,
+      description: description,
+      isCompleted: false
+    };
+
+    setTasks([...tasks, newTask]);
+  }
+
   function onTaskComplete(taskId) {
     const newTasks = tasks.map(task => {
       if (task.id === taskId) {
@@ -72,7 +88,8 @@ function App() {
 
       {/* Form */}
       <Container>
-
+        <AddTask onAddTaskSubmit={onAddTaskSubmit}>
+        </AddTask>
       </Container>
 
       {/* List */}

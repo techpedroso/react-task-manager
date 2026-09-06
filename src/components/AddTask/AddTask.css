@@ -1,0 +1,8 @@
+.form-container {
+    width: 40%;
+}
+
+.form-input::placeholder {
+    font-size: 0.90rem;
+    color: var(--color-text);
+}
