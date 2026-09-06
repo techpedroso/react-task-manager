@@ -5,6 +5,21 @@
   background-color: var(--color-background);
   color: var(--color-text);
 }
+.base-container {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  background-color: var(--color-surface);
+}
+
+.surface-container {
+  color: var(--color-text);
+  background-color: var(--color-surface-raised);
+  box-shadow: var(--shadow-sm);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+}
 
 .title {
   font-size: 36px;
