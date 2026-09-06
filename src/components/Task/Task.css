@@ -4,23 +4,11 @@
     gap: 12px;
 
     width: 40%;
-    padding: 12px;
-    border-radius: 8px;
-
-    box-shadow: var(--shadow-sm);
-    background-color: var(--color-surface);
 }
 
 .task-list_item {
     width: 100%;
-
-    color: var(--color-text);
-    background-color: var(--color-surface-raised);
-    border: none;
-    border-radius: 6px;
-    box-shadow: var(--shadow-sm);
-    padding: 12px;
-
+    font-size: var(--font-size-md);
     cursor: pointer;
 }
 

@@ -3,12 +3,12 @@ import Icon from "../Icon/Icon.jsx";
 
 function Task(props) {
     return (
-        <ul className="task-list">
+        <ul className="base-container task-list">
             {props.tasks.map((task) =>
                 <li key={task.id} className="flex justify-center gap-sm">
                     <button
                         onClick={() => props.onTaskComplete(task.id)}
-                        className={`task-list_item ${task.isCompleted && 'task-list_item-completed'}`}>
+                        className={`surface-container task-list_item ${task.isCompleted && 'task-list_item-completed'}`}>
                         {task.title}
                     </button>
 
