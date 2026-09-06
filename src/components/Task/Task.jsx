@@ -3,7 +3,7 @@ import Icon from "../Icon/Icon.jsx";
 
 function Task(props) {
     return (
-        <ul className="base-container task-list">
+        <ul className="base-container task-list flex flex-column gap-md">
             {props.tasks.map((task) =>
                 <li key={task.id} className="flex justify-center gap-sm">
                     <button
