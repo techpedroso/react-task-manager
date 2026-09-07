@@ -10,8 +10,17 @@ The application is intentionally simple, but built with a focus on being solid, 
 
 The best part is that you can see all of this in a simple task application, facing one of the most common experiences in customer experience: customers never realize just how beautiful and thoughtfully everything under the hood really is.
 
-# Getting started
+# Task Manager – Software Engineering
 
+## Feats
+- Task CRUD
+- Responsive progress bar and percentage
+- Themes
+
+## Standards
+- Mini-System Design
+
+# Getting started
 All you need to run the software...
 
 ## Requirements
