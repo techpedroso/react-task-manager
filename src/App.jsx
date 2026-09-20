@@ -1,12 +1,12 @@
 import "./App.css";
 
-import { useState } from "react"; //importa o useState do React
+import { useState } from "react";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import Container from "./components/Container/Container.jsx"
-import ProgressBar from "./components/ProgressBar/ProgressBar.jsx";
-import Task from "./components/Task/Task.jsx"
-import AddTask from "./components/AddTask/AddTask.jsx"
 import Icon from "./components/Icon/Icon.jsx";
+import TaskListPage from "./pages/TaskListPage.jsx"
+import TaskDescriptionPage from "./pages/TaskDescriptionPage.jsx";
 
 import {v4} from "uuid";
 
@@ -86,6 +86,17 @@ function App() {
     onChangeProgress(newTasks);
   }
 
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <TaskListPage tasks={tasks} progress={progress} onTaskComplete={onTaskComplete} onTaskDelete={onTaskDelete} onAddTaskSubmit={onAddTaskSubmit}/>
+    },
+    {
+      path: "/task-description",
+      element: <TaskDescriptionPage/>
+    },
+  ]);
+
   return (
     <div className="app flex align-center flex-column gap-lg" data-theme={theme}>
       {/* Header */}
@@ -97,21 +108,8 @@ function App() {
         </button>
       </Container>
 
-      {/* Form */}
-      <Container>
-        <AddTask onAddTaskSubmit={onAddTaskSubmit}>
-        </AddTask>
-      </Container>
-
-      <Container>
-        <ProgressBar progress={progress}></ProgressBar>
-      </Container>
-
-      {/* List */}
-      <Container>
-        <Task tasks={tasks} onTaskComplete={onTaskComplete} onTaskDelete={onTaskDelete}>
-        </Task>
-      </Container>
+      {/* render pages */}
+      <RouterProvider router={router}/>
     </div>
   );
 }

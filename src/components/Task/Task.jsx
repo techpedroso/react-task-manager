@@ -1,30 +1,29 @@
 import "./Task.css";
-import Icon from "../Icon/Icon.jsx";
+
+import Container from "../Container/Container.jsx";
+import AddTask from "./AddTask/AddTask.jsx";
+import ProgressBar from "./ProgressBar/ProgressBar.jsx";
+import ListTask from "./ListTask/ListTask.jsx";
 
 function Task(props) {
     return (
-        <ul className="base-container task-list flex flex-column gap-md">
-            {props.tasks.map((task) =>
-                <li key={task.id} className="flex justify-center gap-sm">
-                    <button
-                        onClick={() => props.onTaskComplete(task.id)}
-                        className={`surface-container task-list_item ${task.isCompleted && 'task-list_item-completed'}`}>
-                        {task.title}
-                    </button>
+        <div className="task-container flex flex-column gap-md">
+            {/* Form */}
+            <Container>
+                <AddTask onAddTaskSubmit={props.onAddTaskSubmit}/>
+            </Container>
 
-                    <button className="button button-icon">
-                        <Icon name="chevron-right"></Icon>
-                    </button>
+            {/* Progress bar */}
+            <Container>
+                <ProgressBar progress={props.progress}></ProgressBar>
+            </Container>
 
-                    <button
-                        onClick={() => props.onTaskDelete(task.id)}
-                        className="button button-icon">
-                        <Icon name="trash"></Icon>
-                    </button>
-                </li>
-            )}
-        </ul>
-    );
+            {/* List */}
+            <Container>
+                <ListTask tasks={props.tasks} onTaskComplete={props.onTaskComplete} onTaskDelete={props.onTaskDelete}/>
+            </Container>
+        </div>
+    )
 }
 
 export default Task;
