@@ -1,9 +1,8 @@
 .progress_container {
-    width: 40%;
+    width: 100%;
 }
 
 .progress_percentage {
-    width: 10%;
     text-align: right;
 }
 
