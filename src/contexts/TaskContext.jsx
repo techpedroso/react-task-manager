@@ -25,11 +25,10 @@ function TaskProvider({ children }) {
         },
     ]);
 
-    const [progress, setProgress] = useState();
-    
-    function onChangeProgress(tasks) {
-        setProgress(tasks.filter((task) => (task.isCompleted === true)).length / tasks.length * 100);
-    }
+    const progress =
+        tasks.length === 0
+            ? 0
+            : tasks.filter(task => task.isCompleted).length / tasks.length * 100;
 
     function addTask(title, description) {
         if (!title.trim() || !description.trim())
@@ -44,7 +43,6 @@ function TaskProvider({ children }) {
 
         const newTasks = [...tasks, newTask];
         setTasks(newTasks);
-        onChangeProgress(newTasks);
     }
 
     function completeTask(taskId) {
@@ -57,13 +55,11 @@ function TaskProvider({ children }) {
         })
 
         setTasks(newTasks);
-        onChangeProgress(newTasks);
     }
 
     function deleteTask(taskId) {
         const newTasks = tasks.filter(task => task.id !== taskId);
         setTasks(newTasks);
-        onChangeProgress(newTasks);
     }
 
     return (
