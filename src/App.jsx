@@ -1,14 +1,12 @@
 import "./App.css";
 
+import { v4 } from "uuid";
 import { useState } from "react";
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+import AppRouter from "./AppRouter.jsx";
 import Container from "./components/Container/Container.jsx"
 import Icon from "./components/Icon/Icon.jsx";
-import TaskListPage from "./pages/TaskListPage.jsx"
-import TaskDescriptionPage from "./pages/TaskDescriptionPage.jsx";
 
-import {v4} from "uuid";
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -86,17 +84,6 @@ function App() {
     onChangeProgress(newTasks);
   }
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <TaskListPage tasks={tasks} progress={progress} onTaskComplete={onTaskComplete} onTaskDelete={onTaskDelete} onAddTaskSubmit={onAddTaskSubmit}/>
-    },
-    {
-      path: "/task-description",
-      element: <TaskDescriptionPage/>
-    },
-  ]);
-
   return (
     <div className="app flex align-center flex-column gap-lg" data-theme={theme}>
       {/* Header */}
@@ -108,8 +95,13 @@ function App() {
         </button>
       </Container>
 
-      {/* render pages */}
-      <RouterProvider router={router}/>
+      <AppRouter
+        tasks={tasks}
+        progress={progress}
+        onTaskComplete={onTaskComplete}
+        onTaskDelete={onTaskDelete}
+        onAddTaskSubmit={onAddTaskSubmit}
+      />
     </div>
   );
 }
