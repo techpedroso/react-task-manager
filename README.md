@@ -1,47 +1,215 @@
-# Task Manager using React + Vite
+# React Task Manager
 
-This project started as a minimal Task Manager UI, featuring task creation, task listing, and theme toggling, along with a lightweight React + Vite development setup with ESLint configured.
+A task manager application built with React and Vite.
 
-The main goal of this project is to showcase my evolution with React by building a simple application while maintaining a solid software engineering foundation.
+The project is being developed as a learning project focused not only on React functionality, but also on application structure, component organization, state management, routing, and maintainable development practices.
 
-Throughout the development process, you’ll notice new features being added naturally, such as a progress bar, multiple themes, and a dedicated task description page.
+## Features
 
-The application is intentionally simple, but built with a focus on being solid, well-structured, and sophisticated.
+* Create tasks with title and description
+* Complete and uncomplete tasks
+* Delete tasks
+* Track task completion progress
+* Light and dark themes
+* Persistent theme preference using `localStorage`
+* Client-side routing with React Router
+* Centralized task state management with React Context
+* Responsive interface
 
-The best part is that you can see all of this in a simple task application, facing one of the most common experiences in customer experience: customers never realize just how beautiful and thoughtfully everything under the hood really is.
+## Technologies
 
-# Task Manager – Software Engineering
+* React
+* React Router
+* Vite
+* JavaScript
+* CSS
+* UUID
 
-## Feats
-- Task CRUD
-- Responsive progress bar and percentage
-- Themes
+## Application Architecture
 
-## Standards
-- Mini-System Design
+The application follows a component-based architecture, separating pages, reusable components, routing, and shared state.
 
-# Getting started
-All you need to run the software...
+```text
+src/
+├── components/
+│   ├── Container/
+│   ├── Icon/
+│   └── Task/
+│       ├── AddTask/
+│       ├── ListTask/
+│       ├── ProgressBar/
+│       └── Task.jsx
+│
+├── contexts/
+│   └── TaskContext.jsx
+│
+├── pages/
+│   ├── TaskListPage.jsx
+│   └── TaskDescriptionPage.jsx
+│
+├── App.jsx
+├── AppRouter.jsx
+├── App.css
+├── index.css
+└── main.jsx
+```
 
-## Requirements
+### Application flow
 
-- Node.js (LTS recommended)
-- npm (or yarn/pnpm)
+```text
+main.jsx
+    ↓
+TaskProvider
+    ↓
+App
+    ├── Header
+    └── AppRouter
+         ├── TaskListPage
+         │    └── Task
+         │         ├── AddTask
+         │         ├── ProgressBar
+         │         └── ListTask
+         │
+         └── TaskDescriptionPage
+```
 
-## Install dependencies
+### `main.jsx`
 
-1. Open a terminal in the project folder:
-2. Install packages with: `npm install`
+Responsible only for bootstrapping the application.
 
-## Common npm scripts
+It initializes React and provides the application with the `TaskProvider`.
 
-- npm run dev — start Vite dev server with HMR for development
-- npm run build — produce an optimized production build
-- npm run preview — locally preview the production build
-- npm run lint — run ESLint across the project
+### `App.jsx`
 
-# Development notes and tips
+Responsible for application-level concerns that are not specific to tasks.
 
-# License
+Currently, this includes:
 
-This repository currently uses the ISC license field in package.json. Add or update LICENSE file if a different license is required.
+* Application layout
+* Header
+* Theme state
+* Theme switching
+* Theme persistence
+
+Task state and task operations are intentionally kept outside of `App`.
+
+### `AppRouter.jsx`
+
+Centralizes the application's client-side routing.
+
+The router maps URLs to pages instead of making `App` responsible for route configuration.
+
+Current routes include:
+
+```text
+/                   → TaskListPage
+/task-description  → TaskDescriptionPage
+```
+
+The task description route is currently a foundation for the future task detail functionality.
+
+### `pages/`
+
+Pages represent screens/routes of the application.
+
+`TaskListPage` composes the task management interface, while `TaskDescriptionPage` is reserved for the task detail view.
+
+Pages are intentionally kept separate from reusable UI components.
+
+### `components/`
+
+Contains reusable UI components.
+
+The task-related components are grouped under `components/Task/`:
+
+* `Task` — composes the task management interface
+* `AddTask` — task creation form
+* `ListTask` — renders the task list and task actions
+* `ProgressBar` — displays completion progress
+
+Other generic components, such as `Container` and `Icon`, are kept outside the task domain.
+
+## Task State Management
+
+Task-related state is centralized in `TaskContext`.
+
+```text
+TaskProvider
+├── tasks
+├── addTask()
+├── completeTask()
+└── deleteTask()
+```
+
+Components that need task information can consume the context instead of receiving task state through multiple layers of props.
+
+This prevents unnecessary prop drilling and gives task-related state a single responsibility boundary.
+
+The context exposes task operations rather than exposing `setTasks` directly. Components therefore interact with the task state through domain-specific operations such as:
+
+```text
+addTask()
+completeTask()
+deleteTask()
+```
+
+## Derived State
+
+Task progress is derived from the current `tasks` state instead of being stored as an independent piece of state.
+
+Conceptually:
+
+```text
+tasks
+  ↓
+completed tasks
+  ↓
+progress
+```
+
+This prevents multiple sources of truth.
+
+When the task state changes, React renders the provider again and the progress value is recalculated from the current tasks.
+
+## Styling
+
+The project uses CSS with shared design tokens and reusable utility classes.
+
+The styling system includes:
+
+* CSS variables for colors, spacing, typography, shadows, and radii
+* Shared container styles
+* Flexbox utility classes
+* Light and dark themes
+* Component-specific styles where appropriate
+
+The goal is to keep visual decisions consistent while avoiding unnecessary duplication between components.
+
+## Development Approach
+
+This project is intentionally developed incrementally.
+
+Architectural decisions are introduced when the application presents a real need for them instead of prematurely introducing abstractions.
+
+Examples include:
+
+* Introducing pages when routing became necessary
+* Extracting `AppRouter` when routing responsibilities started accumulating in `App`
+* Introducing `TaskContext` when task state and operations began passing through multiple component layers
+* Removing progress state after identifying it as derived state
+
+GitHub Issues, Milestones, branches, and Conventional Commits are used to organize and document the development process.
+
+## Running the Project
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
